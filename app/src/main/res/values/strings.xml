@@ -5,5 +5,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="txt_name">Nombre</string>
     <string name="txt_description">Descripción</string>
+    <string name="txt_rut">Rut</string>
+    <string name="txt_age">Edad</string>
     <string name="btn_agregar">Agregar</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_search">Buscar</string>
+    <string name="btn_previos">Anterior</string>
 </resources>
