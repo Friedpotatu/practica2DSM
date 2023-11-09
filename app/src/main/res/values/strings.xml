@@ -11,4 +11,6 @@
     <string name="btn_save">Guardar</string>
     <string name="btn_search">Buscar</string>
     <string name="btn_previos">Anterior</string>
+    <string name="txt_list">Listado de Consolas</string>
+    <string name="btn_next">Siguiente</string>
 </resources>

@@ -14,9 +14,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.practica2dsm.R;
 import com.example.practica2dsm.databinding.FragmentHomeBinding;
+import com.example.practica2dsm.ui.dashboard.DashboardFragment;
 
 import java.util.ArrayList;
 
@@ -24,11 +28,10 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private ListView lv_console;
-    private EditText txt_name;
-    private EditText txt_description;
+    private EditText txt_name, txt_description;
     private Button btn_add;
 
-    private ArrayList<String> consoleList;
+    private ArrayList<String> consoleList, descriptionList;
     private ArrayAdapter<String> adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -42,6 +45,7 @@ public class HomeFragment extends Fragment {
         btn_add = binding.btnAdd;
 
         consoleList = new ArrayList<>();
+        descriptionList = new ArrayList<>();
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, consoleList);
 
         lv_console.setAdapter(adapter);
@@ -54,6 +58,7 @@ public class HomeFragment extends Fragment {
 
                 if (!name.isEmpty() && !description.isEmpty()) {
                     consoleList.add(name);
+                    descriptionList.add(description);
                     adapter.notifyDataSetChanged();
                     txt_name.setText("");
                     txt_description.setText("");
@@ -68,7 +73,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String console = ((TextView) view).getText().toString();
-                Toast.makeText(getContext(), "Consola seleccionada: " + console, Toast.LENGTH_SHORT).show();
+                String description = descriptionList.get(position).toString();
+                Toast.makeText(getContext(), "Consola seleccionada: " + console + " Descripción: " + description, Toast.LENGTH_SHORT).show();
             }
         });
 
