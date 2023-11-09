@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.practica2dsm.R;
 import com.example.practica2dsm.databinding.FragmentHomeBinding;
@@ -29,7 +30,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private ListView lv_console;
     private EditText txt_name, txt_description;
-    private Button btn_add;
+    private Button btn_add, btn_next;
 
     private ArrayList<String> consoleList, descriptionList;
     private ArrayAdapter<String> adapter;
@@ -43,6 +44,7 @@ public class HomeFragment extends Fragment {
         txt_name = binding.txtName;
         txt_description = binding.txtDescription;
         btn_add = binding.btnAdd;
+        btn_next = binding.btnNext;
 
         consoleList = new ArrayList<>();
         descriptionList = new ArrayList<>();
@@ -75,6 +77,14 @@ public class HomeFragment extends Fragment {
                 String console = ((TextView) view).getText().toString();
                 String description = descriptionList.get(position).toString();
                 Toast.makeText(getContext(), "Consola seleccionada: " + console + " Descripción: " + description, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.action_navigation_home_to_navigation_dashboard);
             }
         });
 

@@ -13,8 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.practica2dsm.R;
 import com.example.practica2dsm.databinding.FragmentDashboardBinding;
+import com.example.practica2dsm.ui.home.HomeFragment;
 
 public class DashboardFragment extends Fragment {
 
@@ -50,8 +53,8 @@ public class DashboardFragment extends Fragment {
         binding.btnPrevios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                previosUser();
-                Toast.makeText(getContext(), "Datos cargados.", Toast.LENGTH_SHORT).show();
+                NavHostFragment.findNavController(DashboardFragment.this)
+                        .navigate(R.id.action_navigation_dashboard_to_navigation_home);
             }
         });
 
